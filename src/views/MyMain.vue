@@ -1,20 +1,29 @@
 <template>
   <div class="my-main">
-    <the-nav></the-nav>
-    <h1>this is my main page</h1>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem beatae
-      dignissimos doloribus id ipsum maiores, nesciunt, obcaecati perferendis
-      porro praesentium quaerat quas qui repellendus sequi, similique sit vel
-      veniam voluptas?
-    </p>
+    <MyHeading />
+    <h2>this is my main page</h2>
+    <my-content :students="students" />
   </div>
 </template>
 
 <script>
+import MyContent from "@/components/MyContent.vue";
 export default {
   name: "MyMain",
+  components: { MyContent },
+  data() {
+    return { students: ["Hawraa", "Saja", "Ghofran", "Ali", "Kadhim"] };
+  },
 };
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+.my-main {
+  h2 {
+    color: red;
+  }
+  p {
+    color: green;
+  }
+}
+</style>

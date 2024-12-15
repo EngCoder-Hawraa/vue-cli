@@ -1,12 +1,12 @@
 <template>
-  <the-nav></the-nav>
+  <my-nav />
   <router-view />
 </template>
 <script>
-import TheNav from "@/components/MyNav.vue";
+import MyNav from "@/components/MyNav.vue";
 export default {
   components: {
-    TheNav,
+    MyNav,
   },
 };
 </script>
@@ -20,8 +20,6 @@ export default {
 }
 
 nav {
-  padding: 30px;
-
   a {
     font-weight: bold;
     color: #2c3e50;
