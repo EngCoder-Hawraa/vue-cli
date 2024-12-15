@@ -1,8 +1,9 @@
 <template>
   <div class="my-main">
-    <MyHeading />
     <h2>this is my main page</h2>
-    <my-content :students="students" />
+    <my-content :students="students" :isActive="isActive" />
+    <hr />
+    <MyContent :students="students" :isActive="isActive" />
   </div>
 </template>
 
@@ -12,7 +13,10 @@ export default {
   name: "MyMain",
   components: { MyContent },
   data() {
-    return { students: ["Hawraa", "Saja", "Ghofran", "Ali", "Kadhim"] };
+    return {
+      students: ["Hawraa", "Saja", "Ghofran", "Ali", "Kadhim"],
+      isActive: true,
+    };
   },
 };
 </script>
