@@ -1,9 +1,17 @@
 <template>
   <div class="my-main">
     <h2>this is my main page</h2>
-    <my-content :students="students" :isActive="isActive" />
+    <my-content
+      :students="students"
+      @updateActive="changeActive($event)"
+      :isActive="isActive"
+    />
     <hr />
-    <MyContent :students="students" :isActive="isActive" />
+    <MyContent
+      :students="students"
+      @updateActive="changeActive($event)"
+      :isActive="isActive"
+    />
   </div>
 </template>
 
@@ -17,6 +25,11 @@ export default {
       students: ["Hawraa", "Saja", "Ghofran", "Ali", "Kadhim"],
       isActive: true,
     };
+  },
+  methods: {
+    changeActive(data) {
+      this.isActive = data;
+    },
   },
 };
 </script>

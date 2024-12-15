@@ -6,8 +6,8 @@
       </li>
     </ul>
     <button @click="deleteStudent()">Change Ref</button>
-    <p>active is {{ myActive }}</p>
-    <button @click="($event) => (myActive = !myActive)">Change Prem</button>
+    <p>active is {{ isActive }}</p>
+    <button @click="changeActive">Change Prem</button>
   </div>
 </template>
 
@@ -28,12 +28,14 @@ export default {
   data() {
     return {
       myStudents: this.students,
-      myActive: this.isActive,
     };
   },
   methods: {
     deleteStudent() {
       this.myStudents.shift();
+    },
+    changeActive() {
+      this.$emit("updateActive", false);
     },
   },
 };
