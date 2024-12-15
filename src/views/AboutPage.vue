@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <MyContent />
+    <MyContent :students="students" />
     <h2>This is about page</h2>
   </div>
 </template>
