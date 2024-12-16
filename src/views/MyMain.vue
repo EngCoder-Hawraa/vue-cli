@@ -12,14 +12,19 @@
       @updateActive="changeActive($event)"
       :isActive="isActive"
     />
+    <LifeCycle />
   </div>
 </template>
 
 <script>
 import MyContent from "@/components/MyContent.vue";
+import LifeCycle from "@/components/LifeCycle.vue";
 export default {
   name: "MyMain",
-  components: { MyContent },
+  components: {
+    MyContent,
+    LifeCycle,
+  },
   data() {
     return {
       students: ["Hawraa", "Saja", "Ghofran", "Ali", "Kadhim"],
