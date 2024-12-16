@@ -1,40 +1,28 @@
 <template>
   <div class="my-main">
     <h2>this is my main page</h2>
-    <my-content
-      :students="students"
-      @updateActive="changeActive($event)"
-      :isActive="isActive"
-    />
-    <hr />
-    <MyContent
-      :students="students"
-      @updateActive="changeActive($event)"
-      :isActive="isActive"
-    />
-    <LifeCycle />
+    <my-component :name="name">
+      <template #slotTitle>
+        <h3>This is slot title</h3>
+      </template>
+      <template #slotText>
+        <p>This is slot paragraph</p>
+      </template>
+    </my-component>
   </div>
 </template>
 
 <script>
-import MyContent from "@/components/MyContent.vue";
-import LifeCycle from "@/components/LifeCycle.vue";
+import MyComponent from "@/components/MyComponent.vue";
 export default {
   name: "MyMain",
   components: {
-    MyContent,
-    LifeCycle,
+    MyComponent,
   },
   data() {
     return {
-      students: ["Hawraa", "Saja", "Ghofran", "Ali", "Kadhim"],
-      isActive: true,
+      name: "Hawraa",
     };
-  },
-  methods: {
-    changeActive(data) {
-      this.isActive = data;
-    },
   },
 };
 </script>
