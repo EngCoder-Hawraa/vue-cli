@@ -1,8 +1,11 @@
 <template>
+  my name is {{ name }}
   <div class="parent">
-    <slot name="slotTitle"></slot>
-    <h2>This is Slot Component, My name is {{ name }}</h2>
-    <slot name="slotText"></slot>
+    <form action="">
+      <slot name="slotHeader"></slot>
+      <slot name="slotInputs"></slot>
+      <slot name="slotActions"></slot>
+    </form>
   </div>
 </template>
 
