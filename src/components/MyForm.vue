@@ -62,6 +62,26 @@
         <input style="width: 50%" type="submit" value="Save" />
       </div>
     </form>
+    <div>
+      <ul>
+        <li v-for="(st, i) in students" :key="i">
+          <p>Name:{{ st.firstName }} {{ st.lastName }}</p>
+          <p>Age: {{ st.age }}</p>
+          <p>Gender: {{ st.gender }}</p>
+          <p>
+            Sports:
+            <strong>
+              <span v-for="(sport, key, i) in st.sports" :key="i"
+                >{{ key }} <br
+              /></span>
+            </strong>
+          </p>
+          <p>Grade: {{ st.grade }}</p>
+          <p>Email: {{ st.email }}</p>
+          <p>Bio: {{ st.bio }}</p>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -90,6 +110,21 @@ export default {
   methods: {
     addStudent() {
       // console.log(this.student);
+      this.students.push(this.student);
+      this.student = {
+        firstName: "",
+        lastName: "",
+        age: "",
+        email: "",
+        gender: "",
+        sports: {
+          tennis: "",
+          football: "",
+          basketball: "",
+        },
+        bio: "",
+        grade: "",
+      };
     },
   },
 };
