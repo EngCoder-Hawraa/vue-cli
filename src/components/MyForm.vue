@@ -71,8 +71,8 @@
           <p>
             Sports:
             <strong>
-              <span v-for="(sport, key, i) in st.sports" :key="i"
-                >{{ key }} <br
+              <span v-for="(val, key, i) in st.sports" :key="i"
+                ><span v-if="val">{{ key }}</span> <br
               /></span>
             </strong>
           </p>
