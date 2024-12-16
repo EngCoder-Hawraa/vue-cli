@@ -1,28 +1,72 @@
 <template>
-  <div class="my-fporm">
+  <div class="my-form">
     <form action="" @submit.prevent>
       <div>
         <label for="">First Name</label>
-        <input type="text" />
+        <input v-model.lazy="student.firstName" type="text" />
+        <p>Result is {{ student.firstName }}</p>
       </div>
-      <hr />
       <div>
         <label for="">Last Name</label>
-        <input type="text" />
+        <input v-model="student.lastName" type="text" />
+        <p>Result is {{ student.lastName }}</p>
       </div>
-      <hr />
       <div>
         <label for="">Age</label>
-        <input type="number" />
+        <input v-model="student.age" type="number" />
+        <p>Result is {{ student.age }}</p>
       </div>
-      <hr />
       <div>
         <label for="">Email</label>
-        <input type="email" />
+        <input v-model="student.email" type="email" />
+        <p>Result is {{ student.email }}</p>
       </div>
-      <hr />
-      <div class="actions">
-        <input type="submit" value="submit" />
+      <div>
+        <h3>Favorite Sports</h3>
+        <label for="tennis">Tennis</label>
+        <input
+          v-model="student.sports.tennis"
+          type="checkbox"
+          name="tennis"
+          id="tennis"
+        />
+        <p>{{ student.sports.tennis }}</p>
+        <label for="football">Football</label>
+        <input
+          v-model="student.sports.football"
+          type="checkbox"
+          name="football"
+          id="football"
+        />
+        <p>{{ student.sports.football }}</p>
+      </div>
+      <div>
+        <h3>Gender</h3>
+        <label for="male">Male</label>
+        <input
+          v-model="student.gender"
+          value="male"
+          type="radio"
+          name="male"
+          id="male"
+        />
+        <label for="female">Female</label>
+        <input
+          v-model="student.gender"
+          value="female"
+          type="radio"
+          name="female"
+          id="female"
+        />
+        {{ student.gender }}
+      </div>
+      <div>
+        <label for="bio">Bio</label>
+        <textarea name="bio" id="bio" v-model="student.bio"></textarea>
+        {{ student.bio }}
+      </div>
+      <div class="actions" style="width: 100%">
+        <input type="submit" style="width: 50%" value="submit" />
       </div>
     </form>
   </div>
@@ -32,9 +76,32 @@
 export default {
   name: "MyForm",
   data() {
-    return {};
+    return {
+      student: {
+        firstName: "",
+        lastName: "",
+        age: "",
+        email: "",
+        sports: {
+          tennis: false,
+          football: false,
+        },
+        gender: "",
+      },
+    };
   },
 };
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.my-form {
+  form {
+    display: flex;
+    flex-wrap: wrap;
+
+    div {
+      width: 40%;
+    }
+  }
+}
+</style>
