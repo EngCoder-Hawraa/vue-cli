@@ -65,6 +65,16 @@
         <textarea name="bio" id="bio" v-model="student.bio"></textarea>
         {{ student.bio }}
       </div>
+      <div>
+        <label for="grade">Grade</label>
+        <select v-model="student.grade" name="grade" id="grade">
+          <option value="one">One</option>
+          <option value="two">Two</option>
+          <option value="three">Three</option>
+          <option value="four">Four</option>
+        </select>
+        {{ student.grade }}
+      </div>
       <div class="actions" style="width: 100%">
         <input type="submit" style="width: 50%" value="submit" />
       </div>
@@ -87,6 +97,8 @@ export default {
           football: false,
         },
         gender: "",
+        bio: "",
+        grade: "",
       },
     };
   },
