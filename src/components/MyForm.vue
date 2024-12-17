@@ -30,21 +30,9 @@
         />
       </div>
       <div>
-        <h3>Favourite Sports</h3>
-        <label for="tennis">Tennis</label>
-        <input v-model="student.sports.tennis" type="checkbox" name="tennis" />
-        <label for="tennis">Football</label>
-        <input
-          v-model="student.sports.football"
-          type="checkbox"
-          name="football"
-        />
-        <label for="tennis">BasketBall</label>
-        <input
-          v-model="student.sports.basketball"
-          type="checkbox"
-          name="basketball"
-        />
+        Favourite Sports
+        <input v-model="student.favouriteSports" type="text" name="" />
+        <input type="submit" value="Add Sport" />
       </div>
       <div style="width: 100%">
         <input style="width: 50%" type="submit" value="Add" />
@@ -53,9 +41,10 @@
     <div>
       <ul>
         <li v-for="(st, i) in students" :key="i">
-          <p>Name:{{ st.firstName }} {{ st.lastName }}</p>
+          <p>Name:{{ st.name }}</p>
           <p>Age: {{ st.age }}</p>
           <p>Gender: {{ st.gender }}</p>
+          <p>Grade: {{ st.grade }}</p>
           <p>
             Sports:
             <strong>
@@ -64,9 +53,6 @@
               /></span>
             </strong>
           </p>
-          <p>Grade: {{ st.grade }}</p>
-          <p>Email: {{ st.email }}</p>
-          <p>Bio: {{ st.bio }}</p>
         </li>
       </ul>
     </div>
@@ -94,18 +80,26 @@ export default {
       // console.log(this.student);
       this.student.favouriteSports.push(this.sport);
       this.sport = "";
-
     },
     async getStudents() {
       await fetch("https://course-backend.onrender.com/")
-        .then(res => res.json())
-        .then(data => console.log(data));
+        .then((res) => res.json())
+        .then((data) => (this.students = data));
+    },
+    async addStudent() {
+      const requestData = {
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
+        body: JSON.stringify(this.student),
+      };
+      await fetch("https://course-backend.onrender.com/add-student",
+        requestData).then(res => res.json())
+        .then(data => (this.students = data));
     },
   },
-  async mounted(){
+  async mounted() {
     await this.getStudents();
-  }
-
+  },
 };
 </script>
 
