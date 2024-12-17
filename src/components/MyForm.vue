@@ -2,16 +2,20 @@
   <div class="my-form">
     <form action="" @submit.prevent="addStudent">
       <div>
-        <label for="firstName">First Name</label>
-        <input v-model="student.firstName" type="text" name="firstName" />
-      </div>
-      <div>
-        <label for="lastName">Last Name</label>
-        <input v-model="student.lastName" type="text" name="lastName" />
+        <label for="Name">Name</label>
+        <input v-model="student.name" type="text" name="firstName" />
       </div>
       <div>
         <label for="age">Age</label>
         <input v-model="student.age" type="number" name="age" />
+      </div>
+      <div>
+        <h3>Grade</h3>
+        <select v-model="student.grade" name="grade" id="grade">
+          <option value="one">One</option>
+          <option value="two">Two</option>
+          <option value="three">Three</option>
+        </select>
       </div>
       <div>
         <h3>Gender</h3>
@@ -42,24 +46,8 @@
           name="basketball"
         />
       </div>
-      <div>
-        <h3>Grade</h3>
-        <select v-model="student.grade" name="grade" id="grade">
-          <option value="one">One</option>
-          <option value="two">Two</option>
-          <option value="three">Three</option>
-        </select>
-      </div>
-      <div>
-        <label for="email">Email</label>
-        <input v-model="student.email" type="email" name="email" />
-      </div>
-      <div>
-        <label for="bio">Bio</label>
-        <textarea v-model="student.bio" name="bio" id="bio"></textarea>
-      </div>
       <div style="width: 100%">
-        <input style="width: 50%" type="submit" value="Save" />
+        <input style="width: 50%" type="submit" value="Add" />
       </div>
     </form>
     <div>
@@ -90,43 +78,34 @@ export default {
   name: "MyForm",
   data() {
     return {
+      sport: "",
       student: {
-        firstName: "",
-        lastName: "",
+        name: "",
         age: "",
-        email: "",
-        gender: "",
-        sports: {
-          tennis: "",
-          football: "",
-          basketball: "",
-        },
-        bio: "",
         grade: "",
+        gender: "",
+        favouriteSports: [],
       },
       students: [],
     };
   },
   methods: {
-    addStudent() {
+    addSport() {
       // console.log(this.student);
-      this.students.push(this.student);
-      this.student = {
-        firstName: "",
-        lastName: "",
-        age: "",
-        email: "",
-        gender: "",
-        sports: {
-          tennis: "",
-          football: "",
-          basketball: "",
-        },
-        bio: "",
-        grade: "",
-      };
+      this.student.favouriteSports.push(this.sport);
+      this.sport = "";
+
+    },
+    async getStudents() {
+      await fetch("https://course-backend.onrender.com/")
+        .then(res => res.json())
+        .then(data => console.log(data));
     },
   },
+  async mounted(){
+    await this.getStudents();
+  }
+
 };
 </script>
 
