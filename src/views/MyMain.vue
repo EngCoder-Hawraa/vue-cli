@@ -12,7 +12,8 @@
       </p>
       <MyForm></MyForm>
       <ul>
-        <li v-for="st in getOldSt" :key="st.id">
+        <input type="search" v-model="search" />
+        <li v-for="st in searchSt" :key="st.id">
           <p>Name: {{ st.name }}</p>
           <p>Age: {{ st.age }}</p>
         </li>
@@ -32,6 +33,7 @@ export default {
       firstName: "Hawraa",
       lastName: "Arkan",
       myArr: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      search: "",
     };
   },
   computed: {
@@ -43,6 +45,9 @@ export default {
     },
     getOldSt() {
       return this.students.filter((st) => st.age >= 14);
+    },
+    searchSt() {
+      return this.students.filter((st) => st.name.match(this.search));
     },
   },
   directives: {
