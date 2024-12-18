@@ -46,9 +46,9 @@
           <p>Gender: {{ st.gender }}</p>
           <p>Grade: {{ st.grade }}</p>
           <p>
-            Sports:
+            Favaourite Sports:
             <strong>
-              <span v-for="(val, key, i) in st.sports" :key="i"
+              <span v-for="(val, key, i) in st.sport" :key="i"
                 ><span v-if="val">{{ key }}</span> <br
               /></span>
             </strong>
@@ -92,9 +92,12 @@ export default {
         method: "POST",
         body: JSON.stringify(this.student),
       };
-      await fetch("https://course-backend.onrender.com/add-student",
-        requestData).then(res => res.json())
-        .then(data => (this.students = data));
+      await fetch(
+        "https://course-backend.onrender.com/add-student",
+        requestData
+      )
+        .then((res) => res.json())
+        .then((data) => (this.students = data));
     },
   },
   async mounted() {
