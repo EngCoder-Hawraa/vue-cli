@@ -46,6 +46,14 @@
       <div style="width: 100%">
         <input style="width: 50%" type="submit" value="Add" />
       </div>
+      <div>
+        <label for="">Add Age To Update</label>
+        <label for="">Age</label>
+        <input type="number" />
+        <label for="">Id</label>
+        <input type="number" />
+        <button type="button">Update</button>
+      </div>
     </form>
     <div>
       <ul>
@@ -80,6 +88,7 @@ export default {
         favouriteSports: [],
       },
       students: [],
+      changeAge: '',
     };
   },
   methods: {
@@ -106,6 +115,15 @@ export default {
         .then((res) => res.json())
         .then((data) => (this.students = data));
     },
+    async updateStudents() {
+      const requestData = {
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
+        body: JSON.stringify({}),
+      };
+      await fetch("https://course-backend.onrender.com/update-student",
+        requestData
+    }
   },
   async mounted() {
     await this.getStudents();
