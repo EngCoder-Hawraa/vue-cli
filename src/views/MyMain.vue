@@ -1,5 +1,7 @@
 <template>
   <div class="my-main">
+    <h3>My Name Is {{ fullName }}</h3>
+    <h3>Total Nums Is {{ calcNums }}</h3>
     <div class="container" v-containerWidth="80">
       <h2>this is my main page</h2>
       <p v-maxSize="20" v-change-color="'red'">
@@ -10,7 +12,7 @@
       </p>
       <MyForm></MyForm>
       <ul>
-        <li v-for="st in students" :key="st.id">
+        <li v-for="st in getOldSt" :key="st.id">
           <p>Name: {{ st.name }}</p>
           <p>Age: {{ st.age }}</p>
         </li>
@@ -25,6 +27,24 @@ import stMixin from "@/mixins/stMixin";
 export default {
   name: "MyMain",
   mixins: [stMixin],
+  data() {
+    return {
+      firstName: "Hawraa",
+      lastName: "Arkan",
+      myArr: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    };
+  },
+  computed: {
+    fullName() {
+      return `${this.firstName} ${this.lastName}`;
+    },
+    calcNums() {
+      return this.myArr.reduce((acc, cur) => acc + cur);
+    },
+    getOldSt() {
+      return this.students.filter((st) => st.age >= 14);
+    },
+  },
   directives: {
     containerWidth(el, order) {
       el.style.maxWidth = order.value + "%";

@@ -15,12 +15,6 @@ export default {
   name: "AboutPage",
   components: {},
   mixins: [stMixin],
-  data() {
-    return {
-      firstName: 'Hawraa',
-      lastName: 'Arkan',
-    }
-  }
 };
 </script>
 
