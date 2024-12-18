@@ -14,6 +14,6 @@ const stMixin = {
   async mounted() {
     await this.getStudents();
   },
-}
+};
 
 export default stMixin;

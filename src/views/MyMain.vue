@@ -21,8 +21,10 @@
 
 <script>
 import MyForm from "@/components/MyForm.vue";
+import stMixin from "@/mixins/stMixin";
 export default {
   name: "MyMain",
+  mixins: [stMixin],
   directives: {
     containerWidth(el, order) {
       el.style.maxWidth = order.value + "%";
@@ -32,23 +34,6 @@ export default {
   },
   components: {
     MyForm,
-  },
-  data() {
-    return {
-      name: "Hawraa",
-      isCompTwo: false,
-      students: [],
-    };
-  },
-  methods: {
-    async getStudents() {
-      await fetch("https://course-backend.onrender.com/")
-        .then((res) => res.json())
-        .then((data) => (this.students = data));
-    },
-  },
-  async mounted() {
-    await this.getStudents();
   },
 };
 </script>
