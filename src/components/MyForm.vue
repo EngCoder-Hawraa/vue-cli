@@ -47,17 +47,18 @@
         <input style="width: 50%" type="submit" value="Add" />
       </div>
       <div>
-        <label for="">Add Age To Update</label>
+        <h3>Update Student</h3>
         <label for="">Age</label>
-        <input type="number" />
+        <input type="number" v-model="changeAge" />
         <label for="">Id</label>
-        <input type="number" />
-        <button type="button">Update</button>
+        <input type="number" v-model="changeId" />
+        <button type="button" @click="updateStudents">Update</button>
       </div>
     </form>
     <div>
       <ul>
         <li v-for="st in students" :key="st.id">
+          <p>Id: {{ st.id }}</p>
           <p>Name:{{ st.name }}</p>
           <p>Age: {{ st.age }}</p>
           <p>Gender: {{ st.gender }}</p>
@@ -68,6 +69,11 @@
               {{ sport }} <br />
             </strong>
           </p>
+          <span
+            @click="($event) => deleteStudents(st.id)"
+            style="cursor: pointer; font-size: 25px"
+            >X</span
+          >
         </li>
       </ul>
     </div>
@@ -88,7 +94,8 @@ export default {
         favouriteSports: [],
       },
       students: [],
-      changeAge: '',
+      changeAge: "",
+      changeId: "",
     };
   },
   methods: {
@@ -116,14 +123,35 @@ export default {
         .then((data) => (this.students = data));
     },
     async updateStudents() {
+      if (!this.changeAge || !this.changeId) {
+        return;
+      }
       const requestData = {
         headers: { "Content-Type": "application/json" },
         method: "POST",
-        body: JSON.stringify({}),
+        body: JSON.stringify({
+          age: this.changeAge,
+        }),
       };
-      await fetch("https://course-backend.onrender.com/update-student",
+      await fetch(
+        `https://course-backend.onrender.com/update-student/${this.changeId}`,
         requestData
-    }
+      )
+        .then((res) => res.json())
+        .then((data) => (this.students = data));
+    },
+    async deleteStudents(id) {
+      const requestData = {
+        headers: { "Content-Type": "application/json" },
+        method: "DELETE",
+      };
+      await fetch(
+        `https://course-backend.onrender.com/delete-student/${id}`,
+        requestData
+      )
+        .then((res) => res.json())
+        .then((data) => (this.students = data));
+    },
   },
   async mounted() {
     await this.getStudents();
