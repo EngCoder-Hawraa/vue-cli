@@ -30,9 +30,18 @@
         />
       </div>
       <div>
-        Favourite Sports
-        <input v-model="student.favouriteSports" type="text" name="" />
-        <input type="submit" value="Add Sport" />
+        <label for="">Favourite Sports</label>
+        <input v-model="sport" type="text" />
+        <button type="button" @click="addSport">Add Sport</button>
+      </div>
+      <div style="margin-left: 50px; margin-top: 10px">
+        <span
+          style="margin-right: 100px"
+          v-for="(sport, i) in student.favouriteSports"
+          :key="i"
+        >
+          {{ sport }}
+        </span>
       </div>
       <div style="width: 100%">
         <input style="width: 50%" type="submit" value="Add" />
@@ -40,17 +49,15 @@
     </form>
     <div>
       <ul>
-        <li v-for="(st, i) in students" :key="i">
+        <li v-for="st in students" :key="st.id">
           <p>Name:{{ st.name }}</p>
           <p>Age: {{ st.age }}</p>
           <p>Gender: {{ st.gender }}</p>
           <p>Grade: {{ st.grade }}</p>
           <p>
             Favaourite Sports:
-            <strong>
-              <span v-for="(val, key, i) in st.sport" :key="i"
-                ><span v-if="val">{{ key }}</span> <br
-              /></span>
+            <strong v-for="(sport, i) in st.favouriteSports" :key="i">
+              {{ sport }} <br />
             </strong>
           </p>
         </li>
