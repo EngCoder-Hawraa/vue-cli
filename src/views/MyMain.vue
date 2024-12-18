@@ -1,6 +1,12 @@
 <template>
   <div class="my-main">
     <h2>this is my main page</h2>
+    <p v-maxSize="20">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis,
+      perferendis, tenetur. Consequatur cum dolor ducimus enim expedita illum
+      incidunt ipsam libero molestiae mollitia nobis nulla, quisquam repudiandae
+      similique, tempore voluptatum.
+    </p>
     <MyForm></MyForm>
   </div>
 </template>
