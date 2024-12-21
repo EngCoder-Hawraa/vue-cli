@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     routerFunc() {
-      this.$router.replace({name: "About"});
+      this.$router.replace({ name: "About" });
     },
   },
   computed: {
