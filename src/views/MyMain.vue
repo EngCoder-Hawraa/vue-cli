@@ -1,8 +1,6 @@
 <template>
   <div class="my-main">
-    <button @click="($event) => $router.push({ name: 'about_page' })">
-      Click Me
-    </button>
+    <button @click="routerFunc">Click Me</button>
     <h3>My Name Is {{ fullName }}</h3>
     <h3>Total Nums Is {{ calcNums }}</h3>
     <div class="container" v-containerWidth="80">
@@ -41,6 +39,11 @@ export default {
       myArr: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       search: "",
     };
+  },
+  methods: {
+    routerFunc() {
+      this.$router.replace({name: "About"});
+    },
   },
   computed: {
     fullName() {

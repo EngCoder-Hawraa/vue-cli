@@ -6,7 +6,7 @@
     <div class="links">
       <ul>
         <li v-for="link in myRoutes" :key="link.name">
-          <router-link :to="link.path">{{ link.meta.title }}</router-link>
+          <router-link :to="link.name">{{ link.meta.title }}</router-link>
         </li>
       </ul>
     </div>
