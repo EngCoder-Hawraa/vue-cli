@@ -5,6 +5,7 @@
     </div>
     <div class="links">
       <ul>
+        <li></li>
         <li v-for="link in links" :key="link">{{ link }}</li>
       </ul>
     </div>
