@@ -8,20 +8,25 @@ const routes = [
     name: "my_main",
     path: "/",
     component: MyMain,
+    meta: {
+      title: "Home",
+    },
   },
   {
     name: "about_page",
     path: "/about",
     component: AboutPage,
     meta: {
-      title: "My About Component",
-      description: "This is a desc for my page",
+      title: "About",
     },
   },
   {
     name: "my_profile",
     path: "/profile",
     component: ProfilePage,
+    meta: {
+      title: "Profile",
+    },
   },
 ];
 

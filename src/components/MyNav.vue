@@ -5,14 +5,8 @@
     </div>
     <div class="links">
       <ul>
-        <li>
-          <router-link to="/">Home</router-link>
-        </li>
-        <li>
-          <router-link to="/about">About</router-link>
-        </li>
-        <li>
-          <router-link to="/profile">Profile</router-link>
+        <li v-for="link in myRoutes" :key="link.name">
+          <router-link :to="link.path">{{ link.meta.title }}</router-link>
         </li>
       </ul>
     </div>
@@ -29,8 +23,11 @@ export default {
   data() {
     return {
       logo: "My Logo",
-      links: ["Link One", "Link Two", "Link Three", "Link Four"],
+      myRoutes: [],
     };
+  },
+  mounted() {
+    this.myRoutes = this.$router.options.routes;
   },
 };
 </script>
