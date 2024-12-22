@@ -2,6 +2,7 @@
   <div class="profile">
     <h2>This is profile page</h2>
     <h1>{{ $route.params.userId }}</h1>
+    <h1>{{ $route.params.userName }}</h1>
   </div>
 </template>
 

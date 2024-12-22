@@ -8,7 +8,10 @@
         <li v-for="link in myRoutes" :key="link.name">
           <router-link
             v-if="link.name == 'my_profile'"
-            :to="{ name: link.name, params: { userId: 150, userName: 'Hawraa Arkan' } }"
+            :to="{
+              name: link.name,
+              params: { userId: 150, userName: 'Hawraa Arkan' },
+            }"
             >{{ link.meta.title }}</router-link
           >
           <router-link v-else :to="{ name: link.name }">{{
